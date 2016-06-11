@@ -22,6 +22,6 @@ namespace RSSClient.Interfaces.Validators
         /// </summary>
         /// <param name="url">Url given</param>
         /// <returns></returns>
-        bool IsValidArray(KeyValuePair<int, string> url);
+        bool IsValidArray(Dictionary<int, string> url);
     }
 }
