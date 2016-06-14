@@ -40,12 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\DuplicatedSourceException.cs" />
     <Compile Include="Exceptions\InvalidURLException.cs" />
     <Compile Include="Interfaces\IRSSClient.cs" />
     <Compile Include="Interfaces\IRSSData.cs" />
     <Compile Include="Interfaces\Validators\ISourceValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RSSClient.cs" />
+    <Compile Include="Validators\RepeatedSourceValidator.cs" />
     <Compile Include="Validators\UrlValidator.cs" />
   </ItemGroup>
   <ItemGroup />
