@@ -64,6 +64,7 @@
     <Compile Include="RSSClientTests.cs" />
     <Compile Include="Validators\RepeatedSourceValidatorTest.cs" />
     <Compile Include="Validators\UrlValidatorTest.cs" />
+    <Compile Include="WebData\DataManagerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -74,6 +75,7 @@
       <Name>RSSClient</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

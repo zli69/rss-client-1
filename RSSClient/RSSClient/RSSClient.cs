@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using RSSClient.Interfaces;
 using RSSClient.Interfaces.Validators;
+using System.Net;
+using System.Threading.Tasks;
+using System.Linq;
+using RSSClient.Interfaces.WebData;
 
 namespace RSSClient
 {
@@ -10,20 +14,37 @@ namespace RSSClient
     /// </summary>
     public class RSSClient : IRSSClient
     {
-        private IEnumerable<ISourceValidator> validators;
+        private IValidator validator;
+        private IEnumerable<ISourceValidator> validatorsSource;
+        private IDataManager dataManager;
 
         /// <summary>
         /// RSS Client Constructor
         /// </summary>
         /// <param name="validators">Validators</param>
-        public RSSClient(IEnumerable<ISourceValidator> validators = null)
+        public RSSClient(IValidator validator = null, IEnumerable<ISourceValidator> validatorsSource = null, IDataManager manager = null)
         {
-            this.validators = validators;
+            this.validator = validator;
+            this.validatorsSource = validatorsSource;
+            this.dataManager = manager;
         }
 
         public IEnumerable<IRSSData> GetData(Dictionary<int, string> sources)
         {
-            throw new NotImplementedException();
+            string[] rss;
+            validator.Source = sources;
+
+            try
+            {
+                validator.Validate(validatorsSource);
+                rss = dataManager.DownloadRSSData(sources.Select(x => x.Value).ToArray());
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
